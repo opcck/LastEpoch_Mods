@@ -30,11 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.3.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="AssetRipper.VersionUtilities">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\AssetRipper.VersionUtilities.dll</HintPath>
       <Private>False</Private>
@@ -105,14 +100,6 @@
     </Reference>
     <Reference Include="IL2CppInterop.Runtime">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\IL2CppInterop.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing.Common">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\runtimes\win\lib\net6.0\System.Drawing.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppNewtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="LE">
@@ -193,14 +180,6 @@
     </Reference>
     <Reference Include="UnityEngine.UIModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.UIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ValueTupleBridge">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Managed\ValueTupleBridge.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="WebSocketDotNet">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\WebSocketDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

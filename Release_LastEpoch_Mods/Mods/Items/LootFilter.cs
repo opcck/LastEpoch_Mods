@@ -1,6 +1,4 @@
-﻿using DMM;
-using HarmonyLib;
-using ItemFiltering;
+﻿using HarmonyLib;
 using System;
 using UnityEngine;
 using UnityEngine.UI;

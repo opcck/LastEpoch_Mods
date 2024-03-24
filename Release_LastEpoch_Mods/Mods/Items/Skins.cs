@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using LastEpochMods.Managers;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -481,12 +482,12 @@ namespace LastEpochMods.Mods.Items
                     public int h;
                     public int w;
                 }
-                public static string helmet = "Helmet";
-                public static string body_armor = "Body";
-                public static string weapon = "Weapon";
-                public static string offhand = "OffHand";
-                public static string gloves = "Gloves";
-                public static string boots = "Boots";
+                public const string helmet = "Helmet";
+                public const string body_armor = "Body";
+                public const string weapon = "Weapon";
+                public const string offhand = "OffHand";
+                public const string gloves = "Gloves";
+                public const string boots = "Boots";
 
                 public static void InitSlots()
                 {
@@ -555,33 +556,18 @@ namespace LastEpochMods.Mods.Items
                     Sprite sprite = null;
                     try
                     {
-                        System.IO.MemoryStream stream = new System.IO.MemoryStream();
-                        if (slot_name == helmet)
+                        byte[] array = slot_name switch
                         {
-                            Properties.Resources.Helmet.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                        }
-                        else if (slot_name == body_armor)
-                        {
-                            Properties.Resources.Armor.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                        }
-                        else if (slot_name == weapon)
-                        {
-                            Properties.Resources.Weapon.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                        }
-                        else if (slot_name == offhand)
-                        {
-                            Properties.Resources.Shield.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                        }
-                        else if (slot_name == gloves)
-                        {
-                            Properties.Resources.Gloves.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                        }
-                        else if (slot_name == boots)
-                        {
-                            Properties.Resources.Boots.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                        }
+                            helmet => Resources.Helmet,
+                            body_armor => Resources.Armor,
+                            weapon => Resources.Weapon,
+                            offhand => Resources.Shield,
+                            gloves => Resources.Gloves,
+                            boots => Resources.Boots,
+                            _ => throw new InvalidOperationException("Invalid slot name")
+                        };
                         Texture2D icon = new Texture2D(1, 1);
-                        ImageConversion.LoadImage(icon, stream.ToArray(), true);
+                        ImageConversion.LoadImage(icon, array, true);
                         sprite = Sprite.Create(icon, new Rect(0, 0, icon.width, icon.height), Vector2.zero);
                     }
                     catch { Main.logger_instance.Error("GetSlotSprite"); }

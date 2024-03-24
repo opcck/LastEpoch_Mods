@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using LastEpochMods.Managers;
 
 namespace LastEpochMods.Mods.SkillsTree
@@ -147,7 +148,7 @@ namespace LastEpochMods.Mods.SkillsTree
         public class LocalTreeData_TryToSpendPassivePoint
         {
             private static bool Added_Level = false;
-            private static UnhollowerBaseLib.Il2CppStructArray<byte> backup_masteries_level = new UnhollowerBaseLib.Il2CppStructArray<byte>(4);
+            private static Il2CppStructArray<byte> backup_masteries_level = new Il2CppStructArray<byte>(4);
             [HarmonyPrefix]
             static void Prefix(LocalTreeData __instance, ref bool __result, CharacterClass __0, byte __1)
             {
@@ -157,7 +158,7 @@ namespace LastEpochMods.Mods.SkillsTree
                     backup_masteries_level = __instance.masteryLevels;
                     if ((!__result) && (Save_Manager.Data.UserData.Skills.Disable_NodeRequirement))
                     {
-                        UnhollowerBaseLib.Il2CppStructArray<byte> results = new UnhollowerBaseLib.Il2CppStructArray<byte>(4);
+                        Il2CppStructArray<byte> results = new Il2CppStructArray<byte>(4);
                         for (int i = 0; i < results.Length; i++)
                         {
                             results[i] = 255;

@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 using LastEpochMods.Managers;
-using UnhollowerBaseLib;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 
 namespace LastEpochMods.Mods.Character

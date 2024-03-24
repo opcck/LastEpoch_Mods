@@ -2372,15 +2372,11 @@ namespace LastEpochMods.Managers
                 red = GeneralFunctions.MakeTextureFromColor(Color.red);
 
                 //PauseMenu
-                System.IO.MemoryStream stream = new System.IO.MemoryStream();
-                Properties.Resources.PauseMenu_Menu.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                 PauseMenu.Menu = new Texture2D(1, 1);
-                ImageConversion.LoadImage(PauseMenu.Menu, stream.ToArray(), true);
+                ImageConversion.LoadImage(PauseMenu.Menu, Resources.PauseMenu_Menu, true);
 
-                stream = new System.IO.MemoryStream();
-                Properties.Resources.PauseMenu_Bottom.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                 PauseMenu.Bottom = new Texture2D(1, 1);
-                ImageConversion.LoadImage(PauseMenu.Bottom, stream.ToArray(), true);
+                ImageConversion.LoadImage(PauseMenu.Bottom, Resources.PauseMenu_Bottom, true);
 
                 IsInitialized = true;
             }

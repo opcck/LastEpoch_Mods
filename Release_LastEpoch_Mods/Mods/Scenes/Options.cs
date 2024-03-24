@@ -6,8 +6,8 @@ namespace LastEpochMods.Mods.Scenes
     public class Options
     {
         //Density && Exp
-        [HarmonyPatch(typeof(SpawnerPlacementManager), "Start")]
-        public class SpawnerPlacementManager_Start
+        [HarmonyPatch(typeof(SpawnerPlacementManager), "RollSpawners")]
+        public class SpawnerPlacementManager_RollSpawners
         {
             [HarmonyPrefix]
             public static void Prefix(ref SpawnerPlacementManager __instance)

@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Il2CppInterop.Runtime.Injection;
 using LastEpochMods.Managers;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -151,10 +152,8 @@ namespace LastEpochMods.Mods.Items
                 Sprite sprite = null;
                 try
                 {
-                    System.IO.MemoryStream stream = new System.IO.MemoryStream();
-                    Properties.Resources.Headhunter.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                     Texture2D icon = new Texture2D(1, 1);
-                    ImageConversion.LoadImage(icon, stream.ToArray(), true);
+                    ImageConversion.LoadImage(icon, Resources.Headhunter, true);
                     sprite = Sprite.Create(icon, new Rect(0, 0, icon.width, icon.height), Vector2.zero);
                 }
                 catch { }
@@ -336,7 +335,7 @@ namespace LastEpochMods.Mods.Items
                 HH_Buff_Config_Backup = new System.Collections.Generic.List<RandomBuffs.HH_Buff>();
                 try
                 {
-                    byte[] list = Properties.Resources.HeadHunter_Buffs;
+                    byte[] list = Resources.HeadHunter_Buffs;
                     string str = System.Text.Encoding.UTF8.GetString(list, 0, list.Length);
                     HH_Buff_Config = JsonConvert.DeserializeObject<System.Collections.Generic.List<RandomBuffs.HH_Buff>>(str);
                 }
@@ -866,7 +865,7 @@ namespace LastEpochMods.Mods.Items
             {
                 try
                 {
-                    UnhollowerRuntimeLib.ClassInjector.RegisterTypeInIl2Cpp<HHTracker>();
+                    ClassInjector.RegisterTypeInIl2Cpp<HHTracker>();
                     Tracker_Initialized = true;
                 }
                 catch { }

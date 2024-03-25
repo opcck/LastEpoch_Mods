@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using LastEpochMods.Managers;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 
 namespace LastEpochMods.Mods.Character

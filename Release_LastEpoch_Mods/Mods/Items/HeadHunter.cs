@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using Il2CppInterop.Runtime.Injection;
 using LastEpochMods.Managers;
 using Newtonsoft.Json;
 using UnityEngine;

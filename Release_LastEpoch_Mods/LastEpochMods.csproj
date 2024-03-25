@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net472;net6.0</TargetFrameworks>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AssemblyTitle>Release_LastEpoch_Mods</AssemblyTitle>
@@ -11,6 +11,7 @@
     <InformationalVersion>0.0.0.998</InformationalVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,157 +30,328 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <Reference Include="AssetRipper.VersionUtilities">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\AssetRipper.VersionUtilities.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\AssetRipper.VersionUtilities.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AssetsTools.NET">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\AssetsTools.NET.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\AssetsTools.NET.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="bHapticsLib">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\bHapticsLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\bHapticsLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Configuration">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Configuration.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Configuration.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Core">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Data">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Diagnostics.StackTrace">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Diagnostics.StackTrace.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Diagnostics.StackTrace.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Globalization.Extensions">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Globalization.Extensions.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Globalization.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.IO.Compression">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.IO.Compression.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.IO.Compression.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.IO.Compression.FileSystem">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Numerics">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Numerics.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Numerics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Runtime">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Runtime.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.Runtime.Serialization">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.Runtime.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Il2CppSystem.ValueTuple">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSystem.ValueTuple.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSystem.ValueTuple.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="IndexRange">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\IndexRange.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\IndexRange.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="IL2CppInterop.Runtime">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\IL2CppInterop.Runtime.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\IL2CppInterop.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="LE">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppLE.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppLE.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MelonLoader">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\MelonLoader.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\MelonLoader.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil.Mdb">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\Mono.Cecil.Mdb.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\Mono.Cecil.Mdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\Mono.Cecil.Pdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil.Rocks">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\Mono.Cecil.Rocks.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\Mono.Cecil.Rocks.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\MonoMod.RuntimeDetour.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\MonoMod.Utils.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\MonoMod.Utils.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppSirenix.Serialization.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppSirenix.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Tomlet">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\net6\Tomlet.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\net6\Tomlet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UniTask">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Il2CppUniTask.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Il2CppUniTask.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Dependencies\Il2CppAssemblyGenerator\UnityDependencies\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Dependencies\Il2CppAssemblyGenerator\UnityDependencies\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\MelonLoader\Il2CppAssemblies\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV6\MelonLoader\Il2CppAssemblies\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <Reference Include="0Harmony, Version=2.3.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AssetRipper.VersionUtilities">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\AssetRipper.VersionUtilities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AssetsTools.NET">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\AssetsTools.NET.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="bHapticsLib">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\bHapticsLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Configuration">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Configuration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Data">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Diagnostics.StackTrace">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Diagnostics.StackTrace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Globalization.Extensions">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Globalization.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.IO.Compression">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.IO.Compression.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.IO.Compression.FileSystem">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Numerics">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Runtime">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Runtime.Serialization">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.ValueTuple">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Il2CppSystem.ValueTuple.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IndexRange">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\IndexRange.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="LE">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\LE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\MelonLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Mono.Cecil.Mdb.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Mono.Cecil.Pdb.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Mono.Cecil.Rocks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\MonoMod.RuntimeDetour.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\MonoMod.Utils.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Sirenix.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Tomlet">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Tomlet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnhollowerBaseLib">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UniTask">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UniTask.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ValueTupleBridge">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\ValueTupleBridge.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WebSocketDotNet">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\WebSocketDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

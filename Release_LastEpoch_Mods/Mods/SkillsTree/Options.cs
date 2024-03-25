@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using LastEpochMods.Managers;
 
 namespace LastEpochMods.Mods.SkillsTree
@@ -46,7 +45,7 @@ namespace LastEpochMods.Mods.SkillsTree
                 }
                 else { return true; }
             }
-        }   
+        }
 
         //Remove Nodes Req
         [HarmonyPatch(typeof(LocalTreeData), "fulfilledRequirementExists")]
@@ -215,7 +214,7 @@ namespace LastEpochMods.Mods.SkillsTree
                 }
             }
         }
-          
+
         /*[HarmonyPatch(typeof(CharacterClass), "isBasePassiveAbilityUnlocked")]
         public class CharacterClass_isBasePassiveAbilityUnlocked
         {
@@ -448,9 +447,9 @@ namespace LastEpochMods.Mods.SkillsTree
                         if (__1 != null)
                         {
                             using_ability = __1;
-                            
+
                             //Main.logger_instance.Msg("OnStartedUsingAbility : Ability = " + __1.abilityName);
-                            
+
                             if (Save_Manager.Data.UserData.Skills.Enable_RemoveChannelCost) { __1.channelCost = 0f; }
                             if (Save_Manager.Data.UserData.Skills.Enable_RemoveManaCost)
                             {
@@ -525,7 +524,7 @@ namespace LastEpochMods.Mods.SkillsTree
                                     {
                                         ability_mutator.TryCast<MeteorMutator>().addedManaCost = 0f;
                                     }
-                                }                                
+                                }
 
                                 //Companions
                                 else if (il2cpp_type.ToString() == "SummonWolfMutator")
@@ -797,7 +796,7 @@ namespace LastEpochMods.Mods.SkillsTree
                             AbilityMutator ability_mutator = Ability_Mutator.GetMutatorFromAbility(__1);
                             //Il2CppSystem.Type il2cpp_type = ability_mutator.GetIl2CppType();
                             //Main.logger_instance.Msg("OnStartedUsingAbility Postfix : Mutator Type = " + il2cpp_type.ToString());
-                            
+
                             if (Save_Manager.Data.UserData.Skills.Enable_RemoveCooldown) { ability_mutator.RemoveCooldown(); }
                         }
                     }

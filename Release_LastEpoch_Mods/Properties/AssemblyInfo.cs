@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 
-[assembly: MelonInfo(typeof(LastEpochMods.Main), "LastEpochMods", "3.2.0", "Ash")]
+[assembly: MelonInfo(typeof(LastEpochMods.Main), "LastEpochMods", "3.2.1", "Ash")]
 [assembly: MelonGame("Eleventh Hour Games", "Last Epoch")]
 [assembly: VerifyLoaderVersion(0, 6, 1, true)]
 

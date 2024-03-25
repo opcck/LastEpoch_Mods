@@ -174,7 +174,7 @@ namespace LastEpochMods.Mods.Items
         }
 
         //Allow Drop if Player already have Max Pots
-        [HarmonyPatch(typeof(GeneratePotions), "TryToDropPotion")]
+        /*[HarmonyPatch(typeof(GeneratePotions), "TryToDropPotion")]
         public class GeneratePotions_TryToDropPotion
         {
             [HarmonyPrefix]
@@ -182,7 +182,7 @@ namespace LastEpochMods.Mods.Items
             {
                 __1 = 255;
             }
-        }
+        }*/
 
         //AutoPickup Potions (with drop)
         [HarmonyPatch(typeof(GroundItemManager), "dropPotionForPlayer")]

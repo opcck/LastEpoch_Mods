@@ -6,9 +6,9 @@
     <AssemblyTitle>Release_LastEpoch_Mods</AssemblyTitle>
     <Product>Release_LastEpoch_Mods</Product>
     <Copyright>Copyright ©  2024</Copyright>
-    <AssemblyVersion>1.0.0.1024</AssemblyVersion>
-    <FileVersion>1.0.0.1024</FileVersion>
-    <InformationalVersion>0.0.0.1024</InformationalVersion>
+    <AssemblyVersion>1.0.0.1050</AssemblyVersion>
+    <FileVersion>1.0.0.1050</FileVersion>
+    <InformationalVersion>0.0.0.1050</InformationalVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <LangVersion>10</LangVersion>

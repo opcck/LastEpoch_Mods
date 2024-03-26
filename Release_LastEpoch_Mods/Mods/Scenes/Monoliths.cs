@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using LastEpochMods.Managers;
-using static LastEpochMods.Mods.Scenes.Monoliths;
 
 namespace LastEpochMods.Mods.Scenes
 {

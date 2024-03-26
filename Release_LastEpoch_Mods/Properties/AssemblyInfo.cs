@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 
-[assembly: MelonInfo(typeof(LastEpochMods.Main), "LastEpochMods", "3.2.1", "Ash")]
+[assembly: MelonInfo(typeof(LastEpochMods.Main), "LastEpochMods", "3.2.2", "Ash")]
 [assembly: MelonGame("Eleventh Hour Games", "Last Epoch")]
 #if NET5_0_OR_GREATER
 [assembly: VerifyLoaderVersion(0, 6, 1, true)]

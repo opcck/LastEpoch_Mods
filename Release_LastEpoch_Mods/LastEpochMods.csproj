@@ -6,9 +6,9 @@
     <AssemblyTitle>Release_LastEpoch_Mods</AssemblyTitle>
     <Product>Release_LastEpoch_Mods</Product>
     <Copyright>Copyright ©  2024</Copyright>
-    <AssemblyVersion>1.0.0.998</AssemblyVersion>
-    <FileVersion>1.0.0.998</FileVersion>
-    <InformationalVersion>0.0.0.998</InformationalVersion>
+    <AssemblyVersion>1.0.0.1024</AssemblyVersion>
+    <FileVersion>1.0.0.1024</FileVersion>
+    <InformationalVersion>0.0.0.1024</InformationalVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <LangVersion>10</LangVersion>
@@ -336,11 +336,13 @@
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Last Epoch\ModV5\MelonLoader\Managed\UnityEngine.UIModule.dll</HintPath>

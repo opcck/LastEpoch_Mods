@@ -8,6 +8,12 @@ namespace LastEpochMods.Managers
         public static string path = Directory.GetCurrentDirectory() + @"\Mods\LastEpochMods\";
         public static string filename = "Config.json";
 
+        public static async void OnInitializeMelon()
+        {
+            Main.logger_instance.Msg("Initialize Save Manager");
+            await System.Threading.Tasks.Task.Run(() => Load.LoadConfig());
+        }
+
         public class Data
         {
             public static Mods_Structure UserData = new Mods_Structure();
@@ -435,31 +441,12 @@ namespace LastEpochMods.Managers
         }
         public class Load
         {
-            public static void Update()
-            {
-                if (!Initialized) { Init(); }
-            }
-
-            public static bool Initialized = false;
-            public static async void Init()
-            {
-                if (!Initialized)
-                {
-                    Main.logger_instance.Msg("Initialize Save_Manager");
-                    Initialized = true;
-                    await System.Threading.Tasks.Task.Run(() => LoadMods());
-                }
-            }
-            private static void LoadMods()
+            public static void LoadConfig()
             {
                 bool error = false;
                 if (File.Exists(path + filename))
                 {
-                    try
-                    {
-                        Data.UserData = JsonConvert.DeserializeObject<Data.Mods_Structure>(File.ReadAllText(path + filename));
-                        CheckErrors();
-                    }
+                    try { Data.UserData = JsonConvert.DeserializeObject<Data.Mods_Structure>(File.ReadAllText(path + filename)); }
                     catch { error = true; }
                 }
                 else { error = true; }
@@ -467,13 +454,12 @@ namespace LastEpochMods.Managers
                 {
                     Data.UserData = DefaultConfig();
                     Save.Mods();
-                }                
+                }
+                CheckErrors();
                 Data.UserData_duplicate = Data.UserData; //Use to check for data changed
             }
             private static Data.Mods_Structure DefaultConfig()
             {
-                Main.logger_instance.Msg("Default Config Loaded");
-
                 var craft_default_implicit = new Data.Craft_Implicits
                 {
                     Enable_Implicit = false,

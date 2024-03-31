@@ -51,101 +51,93 @@ namespace LastEpochMods.Mods.Items
             public static bool Initialized = false;
             public static void InitList()
             {
-                //if (Config.Initialized)
-                //{
-                    Initialized = false;
-                    if (UniqueList.instance.IsNullOrDestroyed())
-                    {
-                        Main.logger_instance.Msg("Try to Init UniqueList");
-                        try { UniqueList.getUnique(0); }
-                        catch { Main.logger_instance.Error("Init UniqueList"); }
-                    }
+                Initialized = false;
+                if (UniqueList.instance.IsNullOrDestroyed())
+                {
+                    Main.logger_instance.Msg("Try to Init UniqueList");
+                    try { UniqueList.getUnique(0); }
+                    catch { Main.logger_instance.Error("Init UniqueList"); }
+                }
 
-                    list_Equipement_types = new System.Collections.Generic.List<equipment_type>();
-                    list_skins = new System.Collections.Generic.List<skin>();
-                    int basic_count = 0;
-                    try
+                list_Equipement_types = new System.Collections.Generic.List<equipment_type>();
+                list_skins = new System.Collections.Generic.List<skin>();
+                int basic_count = 0;
+                try
+                {
+                    foreach (ItemList.BaseEquipmentItem item in ItemList.instance.EquippableItems)
                     {
-                        foreach (ItemList.BaseEquipmentItem item in ItemList.instance.EquippableItems)
-                        {                            
-                            list_Equipement_types.Add(new equipment_type
-                            {
-                                equipement_type = item.type,
-                                id = (byte)item.TryCast<ItemList.BaseItem>().baseTypeID
-                            });
-
-                            foreach (ItemList.EquipmentItem sub_item in item.subItems)
-                            {
-                                if ((sub_item.classRequirement == ItemList.ClassRequirement.None) || (sub_item.classRequirement.ToString() == Character_Class))
-                                {
-                                    ItemDataUnpacked new_item = new ItemDataUnpacked
-                                    {
-                                        LvlReq = 0,
-                                        classReq = ItemList.ClassRequirement.Any,
-                                        itemType = (byte)item.baseTypeID,
-                                        subType = (ushort)sub_item.subTypeID,
-                                        rarity = 0,
-                                        sockets = 0,
-                                        uniqueID = 0
-                                    };
-                                    list_skins.Add(new skin
-                                    {
-                                        equipement_type = item.type,
-                                        subtype = sub_item.subTypeID,
-                                        unique = false,
-                                        set = false,
-                                        unique_id = 0,
-                                        icon = Helper.GetItemIcon(new_item)
-                                    });
-                                }
-                                //else { Main.logger_instance.Msg("Class Requirement : " + sub_item.classRequirement); }
-                            }
-                        }
-                        basic_count = list_skins.Count;
-                    }
-                    catch { Main.logger_instance.Error("Error ItemList"); }
-
-                    try
-                    {
-                        foreach (UniqueList.Entry unique in UniqueList.instance.uniques)
+                        list_Equipement_types.Add(new equipment_type
                         {
-                            if (unique.hasClassCompatibleSubType(Character_Class_Id, 0, false))
+                            equipement_type = item.type,
+                            id = (byte)item.TryCast<ItemList.BaseItem>().baseTypeID
+                        });
+
+                        foreach (ItemList.EquipmentItem sub_item in item.subItems)
+                        {
+                            if ((sub_item.classRequirement == ItemList.ClassRequirement.None) || (sub_item.classRequirement.ToString() == Character_Class))
                             {
-                                int item_rarity = 7;
-                                if (unique.isSetItem) { item_rarity = 8; }
                                 ItemDataUnpacked new_item = new ItemDataUnpacked
                                 {
                                     LvlReq = 0,
                                     classReq = ItemList.ClassRequirement.Any,
-                                    itemType = unique.baseType,
-                                    subType = unique.subTypes[0],
-                                    rarity = (byte)item_rarity,
+                                    itemType = (byte)item.baseTypeID,
+                                    subType = (ushort)sub_item.subTypeID,
+                                    rarity = 0,
                                     sockets = 0,
-                                    uniqueID = unique.uniqueID
+                                    uniqueID = 0
                                 };
-
                                 list_skins.Add(new skin
                                 {
-                                    equipement_type = Helper.GetEquipementTypeFromId(unique.baseType),
-                                    subtype = (int)unique.subTypes[0],
-                                    unique = true,
-                                    set = unique.isSetItem,
-                                    unique_id = unique.uniqueID,
+                                    equipement_type = item.type,
+                                    subtype = sub_item.subTypeID,
+                                    unique = false,
+                                    set = false,
+                                    unique_id = 0,
                                     icon = Helper.GetItemIcon(new_item)
                                 });
                             }
                         }
-
                     }
-                    catch { /*Main.logger_instance.Error("Error UniqueList");*/ }
+                    basic_count = list_skins.Count;
+                }
+                catch { Main.logger_instance.Error("Error ItemList"); }
 
-                    int unique_count = list_skins.Count - basic_count;
-                    if (unique_count > 0)
+                try
+                {
+                    foreach (UniqueList.Entry unique in UniqueList.instance.uniques)
                     {
-                        //Main.logger_instance.Msg("List Skins Done : " + list_skins.Count + " items");
-                        Initialized = true;
+                        if (unique.hasClassCompatibleSubType(Character_Class_Id, 0, false))
+                        {
+                            int item_rarity = 7;
+                            if (unique.isSetItem) { item_rarity = 8; }
+                            ItemDataUnpacked new_item = new ItemDataUnpacked
+                            {
+                                LvlReq = 0,
+                                classReq = ItemList.ClassRequirement.Any,
+                                itemType = unique.baseType,
+                                subType = unique.subTypes[0],
+                                rarity = (byte)item_rarity,
+                                sockets = 0,
+                                uniqueID = unique.uniqueID
+                            };
+
+                            list_skins.Add(new skin
+                            {
+                                equipement_type = Helper.GetEquipementTypeFromId(unique.baseType),
+                                subtype = (int)unique.subTypes[0],
+                                unique = true,
+                                set = unique.isSetItem,
+                                unique_id = unique.uniqueID,
+                                icon = Helper.GetItemIcon(new_item)
+                            });
+                        }
                     }
-                //}
+
+                }
+                catch { /*Main.logger_instance.Error("Error UniqueList");*/ }
+
+                int unique_count = list_skins.Count - basic_count;
+                if (unique_count > 0) { Initialized = true; }
             }
         }
         public class UI
@@ -469,7 +461,7 @@ namespace LastEpochMods.Mods.Items
                         }
                     }
                     catch { Main.logger_instance.Error("Skins : Tabs:Init(); -> TabElements"); }
-                }
+                }                
             }
             public class Slots
             {
@@ -490,6 +482,7 @@ namespace LastEpochMods.Mods.Items
 
                 public static void InitSlots()
                 {
+                    //Main.logger_instance.Msg("Initialize Slots for Skins");
                     list_slots = new System.Collections.Generic.List<SkinSlot>();
                     try
                     {
@@ -553,23 +546,12 @@ namespace LastEpochMods.Mods.Items
                 private static Sprite GetSlotSprite(string slot_name)
                 {
                     Sprite sprite = null;
-                    try
-                    {
-                        byte[] array = slot_name switch
-                        {
-                            helmet => Resources.Helmet,
-                            body_armor => Resources.Armor,
-                            weapon => Resources.Weapon,
-                            offhand => Resources.Shield,
-                            gloves => Resources.Gloves,
-                            boots => Resources.Boots,
-                            _ => throw new InvalidOperationException("Invalid slot name")
-                        };
-                        Texture2D icon = new Texture2D(1, 1);
-                        ImageConversion.LoadImage(icon, array, true);
-                        sprite = Sprite.Create(icon, new Rect(0, 0, icon.width, icon.height), Vector2.zero);
-                    }
-                    catch { Main.logger_instance.Error("GetSlotSprite"); }
+                    if (slot_name == helmet) { sprite = Assets_Manager.Skins.Helmet; }
+                    else if (slot_name == body_armor) { sprite = Assets_Manager.Skins.Armor; }
+                    else if (slot_name == weapon) { sprite = Assets_Manager.Skins.Weapons; }
+                    else if (slot_name == offhand) { sprite = Assets_Manager.Skins.Shield; }
+                    else if (slot_name == gloves) { sprite = Assets_Manager.Skins.Gloves; }
+                    else if (slot_name == boots) { sprite = Assets_Manager.Skins.Boots; }
 
                     return sprite;
                 }

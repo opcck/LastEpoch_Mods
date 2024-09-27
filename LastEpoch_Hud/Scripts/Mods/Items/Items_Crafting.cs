@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using MelonLoader;
-using TMPro;
 using UnityEngine;
 
 namespace LastEpoch_Hud.Scripts.Mods.Items
@@ -673,14 +672,14 @@ namespace LastEpoch_Hud.Scripts.Mods.Items
             public class CraftingMaterialsPanelUI_AddShardsFromList
             {
                 [HarmonyPostfix]
-                static void Postfix(CraftingMaterialsPanelUI __instance, ref UnhollowerBaseLib.Il2CppReferenceArray<AffixList.Affix> __0)
+                static void Postfix(CraftingMaterialsPanelUI __instance, ref Il2CppReferenceArray<AffixList.Affix> __0)
                 {
                     //if (Main.debug) { Main.logger_instance.Msg("CraftingMaterialsPanelUI : AddShardsFromList : Postfix"); }
                     if (!Refs_Manager.item_list.IsNullOrDestroyed())
                     {
                         //int count = Refs_Manager.item_list.affixList.singleAffixes.Count + Refs_Manager.item_list.affixList.multiAffixes.Count;
                         //UnhollowerBaseLib.Il2CppReferenceArray<AffixList.Affix> new_list = new UnhollowerBaseLib.Il2CppReferenceArray<AffixList.Affix>(count);
-                        UnhollowerBaseLib.Il2CppReferenceArray<AffixList.Affix> new_list = new UnhollowerBaseLib.Il2CppReferenceArray<AffixList.Affix>(1);
+                        Il2CppReferenceArray<AffixList.Affix> new_list = new Il2CppReferenceArray<AffixList.Affix>(1);
                         Refs_Manager.item_list.affixList.isIdolAffix = AffixList.Filter.Either;
                         foreach (AffixList.Affix affix in __0)
                         {
@@ -1569,15 +1568,15 @@ namespace LastEpoch_Hud.Scripts.Mods.Items
                 //Main.logger_instance.Msg("Init AffixSlotForge");
                 AffixSlotForge asf = slot_obj.GetComponent<AffixSlotForge>();
                 asf.background = affix_desc_obj;
-                asf.countTMP = availables_count_obj.GetComponent<TextMeshProUGUI>();
+                asf.countTMP = availables_count_obj.GetComponent<TMPro.TextMeshProUGUI>();
                 asf.glassLense = glass_lense_obj;
                 asf.glowPath = active_pathing_obj.GetComponent<UnityEngine.UI.Image>();
-                asf.nameTMP = affix_name_obj.GetComponent<TextMeshProUGUI>();
+                asf.nameTMP = affix_name_obj.GetComponent<TMPro.TextMeshProUGUI>();
                 asf.shardCountHolder = availables_obj;
                 asf.shardIcon = shards_ico_obj.GetComponent<UnityEngine.UI.Image>();
                 if (slot == 4) { asf.slotID = AffixSlotForge.AffixSlotID.PREFIX_TWO; }
                 else if (slot == 5) { asf.slotID = AffixSlotForge.AffixSlotID.SUFFIX_TWO; }
-                asf.tierTMP = tier_obj.GetComponent<TextMeshProUGUI>();
+                asf.tierTMP = tier_obj.GetComponent<TMPro.TextMeshProUGUI>();
                 asf.tierVFXObject = slam_obj;
                 asf.upgradeButton = upgrade_obj.GetComponent<CraftingUpgradeButton>();
             }

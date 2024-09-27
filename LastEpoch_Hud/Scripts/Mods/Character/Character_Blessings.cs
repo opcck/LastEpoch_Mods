@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using MelonLoader;
-using UnhollowerBaseLib;
 using UnityEngine;
 
 namespace LastEpoch_Hud.Scripts.Mods.Character

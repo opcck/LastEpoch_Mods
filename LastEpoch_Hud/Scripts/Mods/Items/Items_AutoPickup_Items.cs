@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using ItemFiltering;
 
 namespace LastEpoch_Hud.Scripts.Mods.Items
 {

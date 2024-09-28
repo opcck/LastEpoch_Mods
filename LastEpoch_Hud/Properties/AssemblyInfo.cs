@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: MelonInfo(typeof(LastEpoch_Hud.Main), LastEpoch_Hud.Main.mod_name, LastEpoch_Hud.Main.mod_version, "Ash")]
 [assembly: MelonGame(LastEpoch_Hud.Main.company_name, LastEpoch_Hud.Main.game_name)]
 #if NET5_0_OR_GREATER
-[assembly: VerifyLoaderVersion(0, 6, 1, true)]
+[assembly: VerifyLoaderVersion(0, 6, 5, true)]
 #else
 [assembly: VerifyLoaderVersion(0, 5, 7, false)]
 #endif

@@ -279,7 +279,7 @@ namespace LastEpoch_Hud.Scripts
                                     case "Toggle_Items_Pickup_Range_Pickup": { Save_Manager.instance.data.Items.Pickup.Enable_RangePickup = __instance.isOn; break; }
                                     case "Toggle_Items_Pickup_Hide_Notifications": { Save_Manager.instance.data.Items.Pickup.Enable_HideMaterialsNotifications = __instance.isOn; break; }
 
-                                    //case "Toggle_Items_Craft_Enable": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod = __instance.isOn; break; }
+                                    case "Toggle_Items_Craft_Enable": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod = __instance.isOn; break; }
                                     case "Toggle_Items_Craft_ForginPotencial": { Save_Manager.instance.data.Items.CraftingSlot.Enable_ForginPotencial = __instance.isOn; break; }
                                     case "Toggle_Items_Craft_Implicit0": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Implicit_0 = __instance.isOn; break; }
                                     case "Toggle_Items_Craft_Implicit1": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Implicit_1 = __instance.isOn; break; }
@@ -1862,7 +1862,8 @@ namespace LastEpoch_Hud.Scripts
                             }
                         }
                         else { Main.logger_instance.Error("Forcedrop"); }
-                        
+
+                        CraftingSlot.enable_mod = Functions.Get_ToggleInLabel(content_obj, "Items_Craft", "Toggle_Items_Craft_Enable", makeSureItsActive: true);
                         GameObject items_craft_content = Functions.GetViewportContent(content_obj, "Items_Craft", "Items_Craft_Content");
                         if (!items_craft_content.IsNullOrDestroyed())
                         {
@@ -2066,7 +2067,7 @@ namespace LastEpoch_Hud.Scripts
                             Requirements.set_req_toggle.isOn = Save_Manager.instance.data.Items.Req.set;
 
                             //Craft
-                            //CraftingSlot.enable_mod.isOn = Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod;
+                            CraftingSlot.enable_mod.isOn = Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod;
                             CraftingSlot.forgin_potencial_toggle.isOn = Save_Manager.instance.data.Items.CraftingSlot.Enable_ForginPotencial;
                             CraftingSlot.forgin_potencial_slider.value = Save_Manager.instance.data.Items.CraftingSlot.ForginPotencial;
 
@@ -2639,6 +2640,8 @@ namespace LastEpoch_Hud.Scripts
                 }
                 public class CraftingSlot
                 {
+                    public static Toggle enable_mod = null;
+
                     public static Toggle forgin_potencial_toggle = null;
                     public static Text forgin_potencial_text = null;
                     public static Slider forgin_potencial_slider = null;

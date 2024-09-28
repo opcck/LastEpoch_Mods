@@ -206,6 +206,7 @@ namespace LastEpoch_Hud.Scripts
                     },
                     CraftingSlot =
                     {
+                        Enable_Mod = false,
                         Enable_ForginPotencial = false,
                         ForginPotencial = 255,
                         Enable_Implicit_0 = false,
@@ -679,6 +680,8 @@ namespace LastEpoch_Hud.Scripts
             }
             public struct CraftingSlot
             {
+                public bool Enable_Mod;
+
                 public bool Enable_ForginPotencial;
                 public float ForginPotencial;
 

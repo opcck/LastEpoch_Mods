@@ -229,14 +229,18 @@ namespace LastEpoch_Hud
 
             return result;
         }
-        public static Toggle Get_ToggleInLabel(GameObject obj, string panel_name, string obj_name)
+        public static Toggle Get_ToggleInLabel(GameObject obj, string panel_name, string obj_name, bool makeSureItsActive = false)
         {
             Toggle result = null;
             GameObject panel = GetChild(obj, panel_name);
             if (!panel.IsNullOrDestroyed())
             {
                 GameObject label = GetChild(panel, "Title");
-                if (!label.IsNullOrDestroyed()) { result = Functions.GetChild(label, obj_name).GetComponent<Toggle>(); }                
+                if (!label.IsNullOrDestroyed()) 
+                {
+                    var temp = Functions.GetChild(label, obj_name);
+                    if (makeSureItsActive) temp.SetActive(true);   
+                    result = temp.GetComponent<Toggle>(); }                
             }
 
             return result;

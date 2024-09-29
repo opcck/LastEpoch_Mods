@@ -1,5 +1,7 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using MelonLoader;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +25,8 @@ namespace LastEpoch_Hud.Scripts
         private bool hud_initializing = false;
         private bool asset_bundle_initializing = false;
         private bool data_initializing = false;
+        private Dictionary<string, string> locale_dict;
+        private bool debug = false;
 
         void Awake()
         {
@@ -117,6 +121,102 @@ namespace LastEpoch_Hud.Scripts
 
             //Content.Headhunter.Get_Refs();
             Content.Headhunter.Set_Active(false);
+            Localization_Hud();
+        }
+        /* 
+         * This function executes once during Init_Hud_Refs(). If 'locale_short' in the function is configured, 
+         * it generates or reads the configuration file 'Locale_xx.json' and iterates through, matching and modifying 
+         * the text of all 'Text' controls under 'hud_object'. 
+         */
+        void Localization_Hud()
+        {
+            string locale_path = Application.dataPath + "/../Mods/" + Main.mod_name;
+            string locale_short = "";
+            string locale_file_full_path = "";
+            string locale_text = "";
+            switch (Locales.current)
+            {
+                /* Set locale_short */
+                case Locales.Selected.Unknow: { locale_short = ""; break; }
+                case Locales.Selected.English: { break; }
+                case Locales.Selected.French: { break; }
+                case Locales.Selected.German: { break; }
+                case Locales.Selected.Russian: { break; }
+                case Locales.Selected.Portuguese: { break; }
+
+                case Locales.Selected.Korean: { break; }
+                case Locales.Selected.Polish: { break; }
+                case Locales.Selected.Chinese: { locale_short = "zh"; break; }
+                case Locales.Selected.Spanish: { break; }
+            }
+            if (locale_short == "") { return; }
+            locale_file_full_path = Path.Combine(locale_path, "Locale_" + locale_short + ".json");
+            if (!(File.Exists(locale_file_full_path)))
+            {
+                /* Write default Locale_xx.json to file as a template for user to add translation strings. */
+                Main.logger_instance.Warning("Hud Manager : Not Found " + locale_file_full_path);
+                locale_dict = new Dictionary<string, string>();
+                TraverseAndGetDefaultText(hud_object.transform);
+                locale_text = JsonConvert.SerializeObject(locale_dict, Formatting.Indented);
+                if (!Directory.Exists(locale_path)) { Directory.CreateDirectory(locale_path); }
+                File.WriteAllText(locale_file_full_path, locale_text);
+                Main.logger_instance.Msg("Hud Manager : Default Locale wrote to " + locale_file_full_path);
+                return;
+            }
+            /* Read Locale_xx.json and recursive set components texts */
+            locale_text = File.ReadAllText(locale_file_full_path);
+            try { locale_dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(locale_text); }
+            catch
+            {
+                Main.logger_instance.Error("Hud Manager : Error when deserializing locale file");
+                return;
+            }
+            if (debug) { foreach (var kvp in locale_dict) { Main.logger_instance.Msg($"{kvp.Key}: {kvp.Value}"); } }
+            TraverseAndReplaceText(hud_object.transform);
+            if (Main.debug) { Main.logger_instance.Msg("Hud Manager : Localized to " + locale_short); }
+        }
+        void TraverseAndGetDefaultText(Transform parent)
+        {
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                Transform child = parent.GetChild(i);
+                if (child.name == "Value") { continue; }
+                Text textComponent = child.GetComponent<Text>();
+                if (textComponent != null)
+                {
+                    if (debug) { Main.logger_instance.Msg("Hud Manager : Found Text component on >" + child.name + ">\tText is >" + textComponent.text); }
+                    if (!locale_dict.ContainsKey(textComponent.text))
+                    {
+                        locale_dict.Add(textComponent.text, textComponent.text);
+                    }
+                }
+                TraverseAndGetDefaultText(child);
+            }
+        }
+        void TraverseAndReplaceText(Transform parent)
+        {
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                Transform child = parent.GetChild(i);
+                if (child.name == "Value") { continue; }
+                Text textComponent = child.GetComponent<Text>();
+                if (textComponent != null)
+                {
+                    if (debug) { Main.logger_instance.Msg("Hud Manager : Found Text component on>" + child.name + ">Text is>" + textComponent.text); }
+                    if (locale_dict.ContainsKey(textComponent.text))
+                    {
+                        if (textComponent.text == "Minimum" || textComponent.text == "Maximum")
+                            textComponent.text = locale_dict[textComponent.text];
+                        /* Note : "Choose Masterie" is used in class Character_Masteries. If any bug there, uncomment the following 2 line */
+                        //else if (textComponent.text == "Choose Masterie")
+                        //    continue;
+                        else
+                            textComponent.text = locale_dict[textComponent.text] + "  " + textComponent.text;
+
+                    }
+                }
+                TraverseAndReplaceText(child);
+            }
         }
         void Init_UserData()
         {
@@ -279,7 +379,7 @@ namespace LastEpoch_Hud.Scripts
                                     case "Toggle_Items_Pickup_Range_Pickup": { Save_Manager.instance.data.Items.Pickup.Enable_RangePickup = __instance.isOn; break; }
                                     case "Toggle_Items_Pickup_Hide_Notifications": { Save_Manager.instance.data.Items.Pickup.Enable_HideMaterialsNotifications = __instance.isOn; break; }
 
-                                    case "Toggle_Items_Craft_Enable": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod = __instance.isOn; break; }
+                                    //case "Toggle_Items_Craft_Enable": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod = __instance.isOn; break; }
                                     case "Toggle_Items_Craft_ForginPotencial": { Save_Manager.instance.data.Items.CraftingSlot.Enable_ForginPotencial = __instance.isOn; break; }
                                     case "Toggle_Items_Craft_Implicit0": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Implicit_0 = __instance.isOn; break; }
                                     case "Toggle_Items_Craft_Implicit1": { Save_Manager.instance.data.Items.CraftingSlot.Enable_Implicit_1 = __instance.isOn; break; }
@@ -1862,8 +1962,7 @@ namespace LastEpoch_Hud.Scripts
                             }
                         }
                         else { Main.logger_instance.Error("Forcedrop"); }
-
-                        CraftingSlot.enable_mod = Functions.Get_ToggleInLabel(content_obj, "Items_Craft", "Toggle_Items_Craft_Enable", makeSureItsActive: true);
+                        
                         GameObject items_craft_content = Functions.GetViewportContent(content_obj, "Items_Craft", "Items_Craft_Content");
                         if (!items_craft_content.IsNullOrDestroyed())
                         {
@@ -2067,7 +2166,7 @@ namespace LastEpoch_Hud.Scripts
                             Requirements.set_req_toggle.isOn = Save_Manager.instance.data.Items.Req.set;
 
                             //Craft
-                            CraftingSlot.enable_mod.isOn = Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod;
+                            //CraftingSlot.enable_mod.isOn = Save_Manager.instance.data.Items.CraftingSlot.Enable_Mod;
                             CraftingSlot.forgin_potencial_toggle.isOn = Save_Manager.instance.data.Items.CraftingSlot.Enable_ForginPotencial;
                             CraftingSlot.forgin_potencial_slider.value = Save_Manager.instance.data.Items.CraftingSlot.ForginPotencial;
 
@@ -2640,8 +2739,6 @@ namespace LastEpoch_Hud.Scripts
                 }
                 public class CraftingSlot
                 {
-                    public static Toggle enable_mod = null;
-
                     public static Toggle forgin_potencial_toggle = null;
                     public static Text forgin_potencial_text = null;
                     public static Slider forgin_potencial_slider = null;
